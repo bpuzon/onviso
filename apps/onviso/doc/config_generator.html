@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module config_generator</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module config_generator</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul> The module provides an API to generate configurations.
+
+<p><b>Authors:</b> Aniko Nagyne Vig (<a href="mailto:aniko@erlang-consulting.com"><tt>aniko@erlang-consulting.com</tt></a>), Marcus Ljungblad, Erlang Training and Consulting Ltd, Bartlomiej Puzon (<a href="mailto:bartlomiej.puzon@erlang-solutions.com"><tt>bartlomiej.puzon@erlang-solutions.com</tt></a>).</p>
+
+<h2><a name="description">Description</a></h2><p> The module provides an API to generate configurations.</p>
+  
+   Version: 1.0
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_flags-2">add_flags/2</a></td><td>Add a flag specification to a trace case record.</td></tr>
+<tr><td valign="top"><a href="#add_merge_conf-2">add_merge_conf/2</a></td><td>Add a merge configuration to a trace case record.</td></tr>
+<tr><td valign="top"><a href="#add_nodes-2">add_nodes/2</a></td><td>Append nodes to a trace case.</td></tr>
+<tr><td valign="top"><a href="#add_pattern-2">add_pattern/2</a></td><td>Add a pattern to a trace case record.</td></tr>
+<tr><td valign="top"><a href="#create_flags-2">create_flags/2</a></td><td>Create flag record.</td></tr>
+<tr><td valign="top"><a href="#create_fun-1">create_fun/1</a></td><td>Create a fun from a string.</td></tr>
+<tr><td valign="top"><a href="#create_merge_conf-0">create_merge_conf/0</a></td><td>Create merge configuration record with the default settings.</td></tr>
+<tr><td valign="top"><a href="#create_merge_conf-3">create_merge_conf/3</a></td><td>Create merge configuration record without comment.</td></tr>
+<tr><td valign="top"><a href="#create_merge_conf-4">create_merge_conf/4</a></td><td>Create merge configuration record.</td></tr>
+<tr><td valign="top"><a href="#create_pattern-4">create_pattern/4</a></td><td>Create a pattern record.</td></tr>
+<tr><td valign="top"><a href="#create_trace_case-0">create_trace_case/0</a></td><td>Creates an empty trace case with a generated ID.</td></tr>
+<tr><td valign="top"><a href="#create_trace_case-1">create_trace_case/1</a></td><td>Creates an empty trace case with a generated ID and a string name.</td></tr>
+<tr><td valign="top"><a href="#validate-5">validate/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#validate-6">validate/6</a></td><td>Validate a configuration as inputted in a user interface.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_flags-2">add_flags/2</a></h3>
+<div class="spec">
+<p><tt>add_flags(TraceCase, Flags) -&gt; any()</tt></p>
+</div><p>Add a flag specification to a trace case record.</p>
+
+<h3 class="function"><a name="add_merge_conf-2">add_merge_conf/2</a></h3>
+<div class="spec">
+<p><tt>add_merge_conf(TraceCase, MergeConf) -&gt; any()</tt></p>
+</div><p>Add a merge configuration to a trace case record.</p>
+
+<h3 class="function"><a name="add_nodes-2">add_nodes/2</a></h3>
+<div class="spec">
+<p><tt>add_nodes(TraceCase, Nodes) -&gt; any()</tt></p>
+</div><p>Append nodes to a trace case.</p>
+
+<h3 class="function"><a name="add_pattern-2">add_pattern/2</a></h3>
+<div class="spec">
+<p><tt>add_pattern(TraceCase, Pattern) -&gt; any()</tt></p>
+</div><p>Add a pattern to a trace case record.</p>
+
+<h3 class="function"><a name="create_flags-2">create_flags/2</a></h3>
+<div class="spec">
+<p><tt>create_flags(Scope, Flags) -&gt; any()</tt></p>
+</div><p>Create flag record.</p>
+
+<h3 class="function"><a name="create_fun-1">create_fun/1</a></h3>
+<div class="spec">
+<p><tt>create_fun(StringFun) -&gt; any()</tt></p>
+</div><p>Create a fun from a string.</p>
+
+<h3 class="function"><a name="create_merge_conf-0">create_merge_conf/0</a></h3>
+<div class="spec">
+<p><tt>create_merge_conf() -&gt; any()</tt></p>
+</div><p><p>Create merge configuration record with the default settings.
+  This means collecting all traces and writing them, as they arrive to the
+  collector node, to file. No manipulation of the trace is conducted. </p></p>
+
+<h3 class="function"><a name="create_merge_conf-3">create_merge_conf/3</a></h3>
+<div class="spec">
+<p><tt>create_merge_conf(BeginFun, WorkFun, EndFun) -&gt; any()</tt></p>
+</div><p><p>Create merge configuration record without comment. </p></p>
+
+<h3 class="function"><a name="create_merge_conf-4">create_merge_conf/4</a></h3>
+<div class="spec">
+<p><tt>create_merge_conf(BeginFun, WorkFun, EndFun, Comment) -&gt; any()</tt></p>
+</div><p><p>Create merge configuration record. This record contains three funs which
+  defines the way merging is done. It is important that the <code>workfun</code>'s head
+  matches the trace output. </p>
+  <p>Example <code>workfun</code> heads</p>
+  <pre>
+  fun(Node, {trace_ts, Pid, call, {Module, Function, Arity}, Time}, PidMapping, Data) -&gt;
+         ...
+     (Node, {trace_ts, Pid, call, {M, F, A}, CallerFunction, Time}, PidMapping, Data) -&gt;
+         ...
+     (Node, {trace_ts, Pid, return_from, From, {M, F, A}, Time}, PidMapping, Data) -&gt;
+         ...
+  end
+  </pre>
+  <p>The workfun must always return <code>{ok, NewData}</code>.</p>
+  <p><strong>Important:</strong> If a trace pattern is generated and the
+  workfun cannot match on any of the heads a runtime error will be generated
+  when trying to merge. </p>
+  <p><code>Data</code> is the accumulator for the trace case evaluation. By default
+  it is set to <code>[]</code> but can be overridden in the <code>beginfun</code>.</p>
+  <pre>
+  BeginFun = fun([]) -&gt;
+                 {ok, #handlerdata{}}
+             end.
+  </pre>
+  <p>In the <code>endfun</code> it is possible to do any kind of post-processing
+  of the accumulated data. The fun must return <code>ok</code> when successful.</p></p>
+
+<h3 class="function"><a name="create_pattern-4">create_pattern/4</a></h3>
+<div class="spec">
+<p><tt>create_pattern(Module, Function, Arity, MatchSpec) -&gt; any()</tt></p>
+</div><p>Create a pattern record. Will perform some basic error validation
+  on the pattern.</p>
+
+<h3 class="function"><a name="create_trace_case-0">create_trace_case/0</a></h3>
+<div class="spec">
+<p><tt>create_trace_case() -&gt; any()</tt></p>
+</div><p>Creates an empty trace case with a generated ID.</p>
+
+<h3 class="function"><a name="create_trace_case-1">create_trace_case/1</a></h3>
+<div class="spec">
+<p><tt>create_trace_case(Name) -&gt; any()</tt></p>
+</div><p>Creates an empty trace case with a generated ID and a string name.
+  Note that the string name is only for readability.</p>
+
+<h3 class="function"><a name="validate-5">validate/5</a></h3>
+<div class="spec">
+<p><tt>validate(Patterns, Nodes, Flags, Merge, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="validate-6">validate/6</a></h3>
+<div class="spec">
+<p><tt>validate(Patterns, Nodes, Flags, Merge, Options, TraceOpts) -&gt; any()</tt></p>
+</div><p><p>Validate a configuration as inputted in a user interface. It is assumed
+  that all data is passed as strings in the following format:</p>
+  <pre>
+  Patterns = [{"module", "function", "arguments", "match specification"}]
+  Nodes = ["node@no-name-host"]
+  Flags = ["scope, [flags]"]
+  Merge = [{beginfun, BeginFun}, {workfun, WorkFun}, {endfun, EndFun}, {comment, Comment}]
+  Options = [{overload, "[]"}, {name, "Easy to read name"},
+             {output_file, "traceoutput.txt"}]
+  TraceOpts = "list()" (see onviso for the possible trace options list
+  </pre>
+  <p>Call validate like this:</p>
+  <pre> validate(Patterns, Nodes, Flags, Merge, Options) </pre>
+  <p>The function will try to validate the input as is and in some cases try
+  to correct minor mistakes. </p>
+  <p>When an error is present the return could look like this:</p>
+  <pre>
+      {error, [{ok, [{ok, Pattern}, {ok, Pattern2}]},
+               {ok, [{ok, Node}]},
+               {ok, [{ok, Flag}]},
+               {error, [{ok, {beginfun, BeginFun}},
+                        {error, {workfun, syntax}},
+                        {ok, {endfun, EndFun}}]},
+               {ok, [{ok, Option}]}]}.
+  </pre></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, May 21 2010, 16:47:56.</i></p>
+</body>
+</html>

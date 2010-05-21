@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module onviso</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module onviso</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The onviso module facilitates a safe interface towards the
+  Inviso application.
+
+<p><b>Authors:</b> Aniko Nagyne Vig (<a href="mailto:aniko@erlang-solutions.com"><tt>aniko@erlang-solutions.com</tt></a>), Bartlomiej Puzon (<a href="mailto:bartlomiej@erlang-solutions.com"><tt>bartlomiej@erlang-solutions.com</tt></a>), Marcus Ljungblad, Erlang Training and Consulting Ltd.</p>
+
+<h2><a name="description">Description</a></h2><p>The onviso module facilitates a safe interface towards the
+  Inviso application. </p>
+  <p>The most common use case of this module is:</p>
+  <pre>
+  1. Start trace
+  2. Define initial handler (BeginFun)
+  3. Define work handler (WorkFun)
+  4. Define post processing handler (EndFun)
+  5. Merge
+  </pre>
+  <p>Of course there maybe a number of variations to this, but it gives a
+  brief introduction to this module's theoretical usage.</p>
+   Version: 1.0
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#clean-0">clean/0</a></td><td>Manually clear all settings.</td></tr>
+<tr><td valign="top"><a href="#do_reconnect-1">do_reconnect/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#last_trace-0">last_trace/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge-4">merge/4</a></td><td>Merge and analyse log files.</td></tr>
+<tr><td valign="top"><a href="#merge-5">merge/5</a></td><td>Same as merge/4 but possible to specify HandlerData structure.</td></tr>
+<tr><td valign="top"><a href="#node_status-0">node_status/0</a></td><td>Returns a list of nodes and the inviso_rt status on each.</td></tr>
+<tr><td valign="top"><a href="#reconnect-1">reconnect/1</a></td><td>Try to resume tracing on a specified node.</td></tr>
+<tr><td valign="top"><a href="#status-0">status/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#status-1">status/1</a></td><td>Retrieve a list of the current settings that Inviso are
+       operating on.</td></tr>
+<tr><td valign="top"><a href="#stop-1">stop/1</a></td><td>Retrieve the log files to the control node.</td></tr>
+<tr><td valign="top"><a href="#string2ms-1">string2ms/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#trace-2">trace/2</a></td><td>Set-up and start a trace using default overload protection and
+       on the local node only.</td></tr>
+<tr><td valign="top"><a href="#trace-3">trace/3</a></td><td>Set-up and start a trace using default overload protection.</td></tr>
+<tr><td valign="top"><a href="#trace-4">trace/4</a></td><td>Set-up and start a trace using default options.</td></tr>
+<tr><td valign="top"><a href="#trace-5">trace/5</a></td><td>Set-up and start a trace.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="clean-0">clean/0</a></h3>
+<div class="spec">
+<p><tt>clean() -&gt; ok</tt></p>
+</div><p>Manually clear all settings. This always succeeds.</p>
+
+<h3 class="function"><a name="do_reconnect-1">do_reconnect/1</a></h3>
+<div class="spec">
+<p><tt>do_reconnect(Node) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="last_trace-0">last_trace/0</a></h3>
+<div class="spec">
+<p><tt>last_trace() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="merge-4">merge/4</a></h3>
+<div class="spec">
+<p><tt>merge(Ref, BeginFun, WorkFun, EndFun) -&gt; Result</tt>
+<ul class="definitions"><li><tt>BeginFun = void | <a href="#type-fun">'fun'(InitHandlerData)</a></tt></li>
+<li><tt>WorkFun = void | <a href="#type-fun">'fun'(Node, Trace, PidMapping, HandlerData)</a></tt></li>
+<li><tt>Node = <a href="#type-node">node()</a></tt></li>
+<li><tt>Trace = {trace_ts, pid(), Type, {Module, Function, Arity}, Time}</tt></li>
+<li><tt>Type = call | return_from</tt></li>
+<li><tt>Module = atom()</tt></li>
+<li><tt>Function = atom()</tt></li>
+<li><tt>Arity = list()</tt></li>
+<li><tt>Time = <a href="#type-now">now()</a></tt></li>
+<li><tt>EndFun = shell | file | <a href="#type-fun">'fun'()</a></tt></li>
+<li><tt>Result = {ok, Count} | {error, Reason}</tt></li>
+<li><tt>Count = integer()</tt></li>
+<li><tt>Reason = no_trace_running | no_file</tt></li>
+</ul></p>
+</div><p>Merge and analyse log files. If they haven't been retrieved yet
+       this function will do it for you. Note that all Funs must match
+       Inviso specification. Default <code>HandlerData</code> is
+        <code>[]</code>but can be
+       overridden with merge/4, however, then all funs must be manually
+       provided.</p>
+
+<h3 class="function"><a name="merge-5">merge/5</a></h3>
+<div class="spec">
+<p><tt>merge(Ref, BeginFun, WorkFun, EndFun, Handler) -&gt; any()</tt></p>
+</div><p>Same as merge/4 but possible to specify HandlerData structure</p>
+
+<h3 class="function"><a name="node_status-0">node_status/0</a></h3>
+<div class="spec">
+<p><tt>node_status() -&gt; Result</tt>
+<ul class="definitions"><li><tt>Result = [{Node, active} | {Node, inactive}]</tt></li>
+<li><tt>Node = atom()</tt></li>
+</ul></p>
+</div><p>Returns a list of nodes and the inviso_rt status on each</p>
+
+<h3 class="function"><a name="reconnect-1">reconnect/1</a></h3>
+<div class="spec">
+<p><tt>reconnect(Node) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Node = atom()</tt></li>
+<li><tt>Result = ok | {error, Reason}</tt></li>
+</ul></p>
+</div><p>Try to resume tracing on a specified node. This may be used to
+       resume trace on a node when the autoresume feature is turned off
+       or to force a faster reconnect</p>
+
+<h3 class="function"><a name="status-0">status/0</a></h3>
+<div class="spec">
+<p><tt>status() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="status-1">status/1</a></h3>
+<div class="spec">
+<p><tt>status(Ref::integer()) -&gt; list() | {error, no_trace_running}</tt></p>
+</div><p>Retrieve a list of the current settings that Inviso are
+       operating on. If no trace exists by that reference, then
+       {error, no_trace_running} is returned.</p>
+
+<h3 class="function"><a name="stop-1">stop/1</a></h3>
+<div class="spec">
+<p><tt>stop(Ref::integer()) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Result = ok | {error, no_trace_running}</tt></li>
+</ul></p>
+</div><p>Retrieve the log files to the control node.</p>
+
+<h3 class="function"><a name="string2ms-1">string2ms/1</a></h3>
+<div class="spec">
+<p><tt>string2ms(FunStr) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="trace-2">trace/2</a></h3>
+<div class="spec">
+<p><tt>trace(Patterns, Flags) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Patterns = list()</tt></li>
+<li><tt>Flags = term()</tt></li>
+<li><tt>Result = {ok, integer()} | {error, Reason}</tt></li>
+</ul></p>
+</div><p>Set-up and start a trace using default overload protection and
+       on the local node only.
+       For all error reasons see <a href="#trace-4">'trace/4'</a>.</p>
+
+<h3 class="function"><a name="trace-3">trace/3</a></h3>
+<div class="spec">
+<p><tt>trace(Patterns, Nodes, Flags) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Nodes = list()</tt></li>
+<li><tt>Patterns = list()</tt></li>
+<li><tt>Flags = term()</tt></li>
+<li><tt>Result = {ok, integer()} | {error, Reason}</tt></li>
+</ul></p>
+</div><p>Set-up and start a trace using default overload protection.
+       For all error reasons see <a href="#trace-4">'trace/4'</a>.</p>
+
+<h3 class="function"><a name="trace-4">trace/4</a></h3>
+<div class="spec">
+<p><tt>trace(Patterns, Nodes, Flags, OverloadProtection) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Nodes = list()</tt></li>
+<li><tt>Patterns = list()</tt></li>
+<li><tt>Flags = tuple()</tt></li>
+<li><tt>OverloadProtection = list()</tt></li>
+<li><tt>Result = {ok, integer()} | {error, Reason}</tt></li>
+</ul></p>
+</div><p>Set-up and start a trace using default options.
+       For all error reasons see <a href="#trace-5">'trace/5'</a>.</p>
+
+<h3 class="function"><a name="trace-5">trace/5</a></h3>
+<div class="spec">
+<p><tt>trace(Patterns, Nodes, Flags, OverloadProtection, Options) -&gt; Result</tt>
+<ul class="definitions"><li><tt>Nodes = list(atom()) | list(tuple(NodeType, atom()))</tt></li>
+<li><tt>NodeType = relayer | collector</tt></li>
+<li><tt>Patterns = {Module, Function, Arity, RestrictedMatchSpec}</tt></li>
+<li><tt>Arity = list()</tt></li>
+<li><tt>RestrictedMatchSpec = return | caller | {fun2ms, FunStr} | [] | MS</tt></li>
+<li><tt>FunStr = string()</tt></li>
+<li><tt>Flags = tuple()</tt></li>
+<li><tt>OverloadProtection = list()</tt></li>
+<li><tt>Options = [{autoresume, AutoresumeOptions}]</tt></li>
+<li><tt>Result = {ok, <a href="#type-int">int()</a>} | {error, Reason}</tt></li>
+<li><tt>Reason = no_connection | node_format | pattern_format | flag_format | no_meta_tracer | node_specification</tt></li>
+</ul></p>
+</div><p><p>Set-up and start a trace. Use
+       merge/4-5 to retreive and merge. Trace will automatically try
+       to connect to the nodes specified in <code>Nodes</code> and fail
+       if the nodes does not share the same magic cookie.</p>
+       <p>Returns the reference as an integer which is used by merge/4-5.</p>
+       <p>If more than one error occurs, the first error is the one returned.</p>
+       <p>The following <code>RestrictedMatchSpecs</code> are recognised:
+       <ul>
+        <li><code>return</code> - equivalent to [{'_', [], [{return_trace}]}]</li>
+        <li><code>caller</code> - equivalent to [{'_', [], [{message, {caller}}]}]</li>
+        <li><code>{fun2ms, FunStr}</code> - where <code>FunStr</code> is a string with
+        a fun body as required by dbg:fun2ms/1</li>
+       </ul>
+       Any other value will be trated as a literal match specification</p>
+       <p>The autoresume feature (onviso_monitor) can be controlled
+        using the Options paramenter.
+       See <a href="onviso_monitor.html#configure-1"><code>onviso_monitor:configure/1</code></a> for possible options.
+       By default, if a node goes down, onviso will try to reestablish the connection
+       and reinitialise tracing. The monitor will use the default interval for
+       each node without an interval specified unless the autoresume is disabled.
+       With <code>resume_nodes</code> it is possible to pass a list specyfying the intervals
+       for each node. The interval of <code>0</code> will disable autoresuming for
+       a node:
+ 
+       <pre>
+       {autoresume, [{nodes, [{alice@server, 1200}, {bob@server, 0}]}]}
+       </pre>
+       Nodes omitted in the list will use the default interval</p>
+       <p>For example, a trace may look like this:</p>
+ 
+       <pre>
+  1&gt; trace([{io, format, '_', []}], ['server@linux'], {all, [call]}, []).
+  {ok, 1}
+       </pre>
+ 
+       <p>When a trace is started using the <code>NodeType</code> it is not
+       possible to merge the trace as all traces are directly relayed to the
+       shell of the collecting node. To set-up a direct relay of traces to
+       the control node, do the following: </p>
+ 
+       <pre>
+  2&gt; trace([{io, format, '_', []}], [{relayer, 'server@linux'},
+                                     {collector, node()}],
+            {all, [call]}, []).
+  {ok, 2}
+       </pre></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, May 21 2010, 16:47:56.</i></p>
+</body>
+</html>

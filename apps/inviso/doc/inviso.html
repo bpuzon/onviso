@@ -1,0 +1,654 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module inviso</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module inviso</h1>
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_node-1">add_node/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_node-2">add_node/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_node_if_ref-1">add_node_if_ref/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_node_if_ref-2">add_node_if_ref/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_nodes-2">add_nodes/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_nodes-3">add_nodes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_nodes_if_ref-2">add_nodes_if_ref/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_nodes_if_ref-3">add_nodes_if_ref/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_suspension-0">cancel_suspension/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_suspension-1">cancel_suspension/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#change_options-1">change_options/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#change_options-2">change_options/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clear-0">clear/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clear-1">clear/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clear-2">clear/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctf-1">ctf/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctf-2">ctf/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctf-3">ctf/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctf_all-0">ctf_all/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctf_all-1">ctf_all/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp-1">ctp/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp-2">ctp/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp-3">ctp/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp-4">ctp/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp_all-0">ctp_all/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctp_all-1">ctp_all/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpl-1">ctpl/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpl-2">ctpl/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpl-3">ctpl/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpl-4">ctpl/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm-3">ctpm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm-4">ctpm/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_globalnames-0">ctpm_globalnames/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_globalnames-1">ctpm_globalnames/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_localnames-0">ctpm_localnames/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_localnames-1">ctpm_localnames/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_ms-4">ctpm_ms/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ctpm_ms-5">ctpm_ms/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_log-0">delete_log/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_log-1">delete_log/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_log-2">delete_log/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#fetch_log-2">fetch_log/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#fetch_log-3">fetch_log/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#fetch_log-4">fetch_log/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flush-0">flush/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flush-1">flush/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_status-0">get_status/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_status-1">get_status/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_tracerdata-0">get_tracerdata/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_tracerdata-1">get_tracerdata/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tpm-4">init_tpm/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tpm-5">init_tpm/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tpm-7">init_tpm/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tpm-8">init_tpm/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tracing-1">init_tracing/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init_tracing-2">init_tracing/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_logs-0">list_logs/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_logs-1">list_logs/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start-0">start/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start-1">start/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#state-0">state/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#state-1">state/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop-0">stop/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_all-0">stop_all/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_nodes-0">stop_nodes/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_nodes-1">stop_nodes/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_tracing-0">stop_tracing/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_tracing-1">stop_tracing/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#subscribe-0">subscribe/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#subscribe-1">subscribe/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#suspend-1">suspend/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#suspend-2">suspend/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tf-1">tf/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tf-2">tf/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tf-3">tf/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tp-1">tp/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tp-2">tp/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tp-4">tp/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tp-5">tp/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tp-6">tp/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpl-1">tpl/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpl-2">tpl/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpl-4">tpl/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpl-5">tpl/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpl-6">tpl/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm-4">tpm/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm-5">tpm/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm-6">tpm/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm-8">tpm/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm-9">tpm/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_globalnames-0">tpm_globalnames/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_globalnames-1">tpm_globalnames/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_localnames-0">tpm_localnames/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_localnames-1">tpm_localnames/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_ms-5">tpm_ms/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_ms-6">tpm_ms/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_ms_tracer-5">tpm_ms_tracer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_ms_tracer-6">tpm_ms_tracer/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_tracer-4">tpm_tracer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_tracer-5">tpm_tracer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_tracer-6">tpm_tracer/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_tracer-8">tpm_tracer/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tpm_tracer-9">tpm_tracer/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unsubscribe-0">unsubscribe/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unsubscribe-1">unsubscribe/1</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_node-1">add_node/1</a></h3>
+<div class="spec">
+<p><tt>add_node(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_node-2">add_node/2</a></h3>
+<div class="spec">
+<p><tt>add_node(Reference, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_node_if_ref-1">add_node_if_ref/1</a></h3>
+<div class="spec">
+<p><tt>add_node_if_ref(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_node_if_ref-2">add_node_if_ref/2</a></h3>
+<div class="spec">
+<p><tt>add_node_if_ref(Reference, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_nodes-2">add_nodes/2</a></h3>
+<div class="spec">
+<p><tt>add_nodes(Nodes, Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_nodes-3">add_nodes/3</a></h3>
+<div class="spec">
+<p><tt>add_nodes(Nodes, Reference, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_nodes_if_ref-2">add_nodes_if_ref/2</a></h3>
+<div class="spec">
+<p><tt>add_nodes_if_ref(Nodes, Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_nodes_if_ref-3">add_nodes_if_ref/3</a></h3>
+<div class="spec">
+<p><tt>add_nodes_if_ref(Nodes, Reference, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cancel_suspension-0">cancel_suspension/0</a></h3>
+<div class="spec">
+<p><tt>cancel_suspension() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cancel_suspension-1">cancel_suspension/1</a></h3>
+<div class="spec">
+<p><tt>cancel_suspension(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="change_options-1">change_options/1</a></h3>
+<div class="spec">
+<p><tt>change_options(Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="change_options-2">change_options/2</a></h3>
+<div class="spec">
+<p><tt>change_options(Nodes, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clear-0">clear/0</a></h3>
+<div class="spec">
+<p><tt>clear() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clear-1">clear/1</a></h3>
+<div class="spec">
+<p><tt>clear(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clear-2">clear/2</a></h3>
+<div class="spec">
+<p><tt>clear(Nodes, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctf-1">ctf/1</a></h3>
+<div class="spec">
+<p><tt>ctf(TraceConfList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctf-2">ctf/2</a></h3>
+<div class="spec">
+<p><tt>ctf(Nodes, TraceConfList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctf-3">ctf/3</a></h3>
+<div class="spec">
+<p><tt>ctf(Nodes, PidSpec, FlagList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctf_all-0">ctf_all/0</a></h3>
+<div class="spec">
+<p><tt>ctf_all() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctf_all-1">ctf_all/1</a></h3>
+<div class="spec">
+<p><tt>ctf_all(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp-1">ctp/1</a></h3>
+<div class="spec">
+<p><tt>ctp(PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp-2">ctp/2</a></h3>
+<div class="spec">
+<p><tt>ctp(Nodes, PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp-3">ctp/3</a></h3>
+<div class="spec">
+<p><tt>ctp(Module, Function, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp-4">ctp/4</a></h3>
+<div class="spec">
+<p><tt>ctp(Nodes, Module, Function, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp_all-0">ctp_all/0</a></h3>
+<div class="spec">
+<p><tt>ctp_all() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctp_all-1">ctp_all/1</a></h3>
+<div class="spec">
+<p><tt>ctp_all(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpl-1">ctpl/1</a></h3>
+<div class="spec">
+<p><tt>ctpl(PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpl-2">ctpl/2</a></h3>
+<div class="spec">
+<p><tt>ctpl(Nodes, PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpl-3">ctpl/3</a></h3>
+<div class="spec">
+<p><tt>ctpl(Module, Function, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpl-4">ctpl/4</a></h3>
+<div class="spec">
+<p><tt>ctpl(Nodes, Module, Function, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm-3">ctpm/3</a></h3>
+<div class="spec">
+<p><tt>ctpm(Mod, Func, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm-4">ctpm/4</a></h3>
+<div class="spec">
+<p><tt>ctpm(Nodes, Mod, Func, Arity) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_globalnames-0">ctpm_globalnames/0</a></h3>
+<div class="spec">
+<p><tt>ctpm_globalnames() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_globalnames-1">ctpm_globalnames/1</a></h3>
+<div class="spec">
+<p><tt>ctpm_globalnames(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_localnames-0">ctpm_localnames/0</a></h3>
+<div class="spec">
+<p><tt>ctpm_localnames() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_localnames-1">ctpm_localnames/1</a></h3>
+<div class="spec">
+<p><tt>ctpm_localnames(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_ms-4">ctpm_ms/4</a></h3>
+<div class="spec">
+<p><tt>ctpm_ms(Mod, Func, Arity, MSname) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ctpm_ms-5">ctpm_ms/5</a></h3>
+<div class="spec">
+<p><tt>ctpm_ms(Nodes, Mod, Func, Arity, MSname) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_log-0">delete_log/0</a></h3>
+<div class="spec">
+<p><tt>delete_log() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_log-1">delete_log/1</a></h3>
+<div class="spec">
+<p><tt>delete_log(What) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_log-2">delete_log/2</a></h3>
+<div class="spec">
+<p><tt>delete_log(Nodes, Spec) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="fetch_log-2">fetch_log/2</a></h3>
+<div class="spec">
+<p><tt>fetch_log(DestDir, Prefix) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="fetch_log-3">fetch_log/3</a></h3>
+<div class="spec">
+<p><tt>fetch_log(ToNode, DestDir, Prefix) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="fetch_log-4">fetch_log/4</a></h3>
+<div class="spec">
+<p><tt>fetch_log(ToNode, LogSpecList, DestDir, Prefix) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="flush-0">flush/0</a></h3>
+<div class="spec">
+<p><tt>flush() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="flush-1">flush/1</a></h3>
+<div class="spec">
+<p><tt>flush(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_status-0">get_status/0</a></h3>
+<div class="spec">
+<p><tt>get_status() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_status-1">get_status/1</a></h3>
+<div class="spec">
+<p><tt>get_status(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_tracerdata-0">get_tracerdata/0</a></h3>
+<div class="spec">
+<p><tt>get_tracerdata() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_tracerdata-1">get_tracerdata/1</a></h3>
+<div class="spec">
+<p><tt>get_tracerdata(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tpm-4">init_tpm/4</a></h3>
+<div class="spec">
+<p><tt>init_tpm(Mod, Func, Arity, CallFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tpm-5">init_tpm/5</a></h3>
+<div class="spec">
+<p><tt>init_tpm(Nodes, Mod, Func, Arity, CallFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tpm-7">init_tpm/7</a></h3>
+<div class="spec">
+<p><tt>init_tpm(Mod, Func, Arity, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tpm-8">init_tpm/8</a></h3>
+<div class="spec">
+<p><tt>init_tpm(Nodes, Mod, Func, Arity, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tracing-1">init_tracing/1</a></h3>
+<div class="spec">
+<p><tt>init_tracing(TracerDataList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init_tracing-2">init_tracing/2</a></h3>
+<div class="spec">
+<p><tt>init_tracing(Nodes, TracerData) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="list_logs-0">list_logs/0</a></h3>
+<div class="spec">
+<p><tt>list_logs() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="list_logs-1">list_logs/1</a></h3>
+<div class="spec">
+<p><tt>list_logs(TracerDataOrNodesList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="start-0">start/0</a></h3>
+<div class="spec">
+<p><tt>start() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="start-1">start/1</a></h3>
+<div class="spec">
+<p><tt>start(Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="state-0">state/0</a></h3>
+<div class="spec">
+<p><tt>state() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="state-1">state/1</a></h3>
+<div class="spec">
+<p><tt>state(Node) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop-0">stop/0</a></h3>
+<div class="spec">
+<p><tt>stop() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_all-0">stop_all/0</a></h3>
+<div class="spec">
+<p><tt>stop_all() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_nodes-0">stop_nodes/0</a></h3>
+<div class="spec">
+<p><tt>stop_nodes() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_nodes-1">stop_nodes/1</a></h3>
+<div class="spec">
+<p><tt>stop_nodes(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_tracing-0">stop_tracing/0</a></h3>
+<div class="spec">
+<p><tt>stop_tracing() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_tracing-1">stop_tracing/1</a></h3>
+<div class="spec">
+<p><tt>stop_tracing(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="subscribe-0">subscribe/0</a></h3>
+<div class="spec">
+<p><tt>subscribe() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="subscribe-1">subscribe/1</a></h3>
+<div class="spec">
+<p><tt>subscribe(Pid) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="suspend-1">suspend/1</a></h3>
+<div class="spec">
+<p><tt>suspend(Reason) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="suspend-2">suspend/2</a></h3>
+<div class="spec">
+<p><tt>suspend(Nodes, Reason) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tf-1">tf/1</a></h3>
+<div class="spec">
+<p><tt>tf(ArgList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tf-2">tf/2</a></h3>
+<div class="spec">
+<p><tt>tf(Nodes, TraceConfList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tf-3">tf/3</a></h3>
+<div class="spec">
+<p><tt>tf(Nodes, PidSpec, FlagList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tp-1">tp/1</a></h3>
+<div class="spec">
+<p><tt>tp(PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tp-2">tp/2</a></h3>
+<div class="spec">
+<p><tt>tp(Nodes, PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tp-4">tp/4</a></h3>
+<div class="spec">
+<p><tt>tp(Module, Function, Arity, MatchSpec) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tp-5">tp/5</a></h3>
+<div class="spec">
+<p><tt>tp(Nodes, Module, Function, Arity, MatchSpec) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tp-6">tp/6</a></h3>
+<div class="spec">
+<p><tt>tp(Nodes, Module, Function, Arity, MatchSpec, Opts) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpl-1">tpl/1</a></h3>
+<div class="spec">
+<p><tt>tpl(PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpl-2">tpl/2</a></h3>
+<div class="spec">
+<p><tt>tpl(Nodes, PatternList) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpl-4">tpl/4</a></h3>
+<div class="spec">
+<p><tt>tpl(Module, Function, Arity, MatchSpec) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpl-5">tpl/5</a></h3>
+<div class="spec">
+<p><tt>tpl(Nodes, Module, Function, Arity, MatchSpec) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpl-6">tpl/6</a></h3>
+<div class="spec">
+<p><tt>tpl(Nodes, Module, Function, Arity, MatchSpec, Opts) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm-4">tpm/4</a></h3>
+<div class="spec">
+<p><tt>tpm(Mod, Func, Arity, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm-5">tpm/5</a></h3>
+<div class="spec">
+<p><tt>tpm(Nodes, Mod, Func, Arity, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm-6">tpm/6</a></h3>
+<div class="spec">
+<p><tt>tpm(Nodes, Mod, Func, Arity, MS, CallFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm-8">tpm/8</a></h3>
+<div class="spec">
+<p><tt>tpm(Mod, Func, Arity, MS, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm-9">tpm/9</a></h3>
+<div class="spec">
+<p><tt>tpm(Nodes, Mod, Func, Arity, MS, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_globalnames-0">tpm_globalnames/0</a></h3>
+<div class="spec">
+<p><tt>tpm_globalnames() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_globalnames-1">tpm_globalnames/1</a></h3>
+<div class="spec">
+<p><tt>tpm_globalnames(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_localnames-0">tpm_localnames/0</a></h3>
+<div class="spec">
+<p><tt>tpm_localnames() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_localnames-1">tpm_localnames/1</a></h3>
+<div class="spec">
+<p><tt>tpm_localnames(Nodes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_ms-5">tpm_ms/5</a></h3>
+<div class="spec">
+<p><tt>tpm_ms(Mod, Func, Arity, MSname, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_ms-6">tpm_ms/6</a></h3>
+<div class="spec">
+<p><tt>tpm_ms(Nodes, Mod, Func, Arity, MSname, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_ms_tracer-5">tpm_ms_tracer/5</a></h3>
+<div class="spec">
+<p><tt>tpm_ms_tracer(Mod, Func, Arity, MSname, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_ms_tracer-6">tpm_ms_tracer/6</a></h3>
+<div class="spec">
+<p><tt>tpm_ms_tracer(Nodes, Mod, Func, Arity, MSname, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_tracer-4">tpm_tracer/4</a></h3>
+<div class="spec">
+<p><tt>tpm_tracer(Mod, Func, Arity, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_tracer-5">tpm_tracer/5</a></h3>
+<div class="spec">
+<p><tt>tpm_tracer(Nodes, Mod, Func, Arity, MS) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_tracer-6">tpm_tracer/6</a></h3>
+<div class="spec">
+<p><tt>tpm_tracer(Nodes, Mod, Func, Arity, MS, CallFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_tracer-8">tpm_tracer/8</a></h3>
+<div class="spec">
+<p><tt>tpm_tracer(Mod, Func, Arity, MS, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="tpm_tracer-9">tpm_tracer/9</a></h3>
+<div class="spec">
+<p><tt>tpm_tracer(Nodes, Mod, Func, Arity, MS, InitFunc, CallFunc, ReturnFunc, RemoveFunc) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="unsubscribe-0">unsubscribe/0</a></h3>
+<div class="spec">
+<p><tt>unsubscribe() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="unsubscribe-1">unsubscribe/1</a></h3>
+<div class="spec">
+<p><tt>unsubscribe(Pid) -&gt; any()</tt></p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, May 21 2010, 16:47:51.</i></p>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module onviso_server</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module onviso_server</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>This module together with onviso_server is the foundation
+  of a configuration back-end layer for higher-level tools which want to make
+  use of the Onviso.
+
+<p><b>Behaviours:</b> <a href="gen_server.html"><tt>gen_server</tt></a>.</p>
+<p><b>Authors:</b> Aniko Nagyne Vig (<a href="mailto:aniko@erlang-consulting.com"><tt>aniko@erlang-consulting.com</tt></a>), Marcus Ljungblad, Erlang Training and Consulting Ltd.</p>
+
+<h2><a name="description">Description</a></h2><p>This module together with onviso_server is the foundation
+  of a configuration back-end layer for higher-level tools which want to make
+  use of the Onviso. The onviso_server acts as a middle man between any
+  user-interface and the wrapper, and offers a possibility to store and load
+  configurations to and from files. </p>
+  <p>For a full example of how these two modules can be used, please refer to
+  the onviso_server module.
+  </p>
+   Version: 1.0
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_flag-1">add_flag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_merge_conf-1">add_merge_conf/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_pattern-1">add_pattern/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_trace_case-1">add_trace_case/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#code_change-3">code_change/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_flag-1">delete_flag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_merge_conf-1">delete_merge_conf/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_pattern-1">delete_pattern/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_trace_case-1">delete_trace_case/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_flag-1">get_flag/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_flags-0">get_flags/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_merge_conf-1">get_merge_conf/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_merge_configurations-0">get_merge_configurations/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pattern-1">get_pattern/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_patterns-0">get_patterns/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_trace_case-1">get_trace_case/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_trace_cases-0">get_trace_cases/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_call-3">handle_call/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_cast-2">handle_cast/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_info-2">handle_info/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init-1">init/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_trace-2">merge_trace/2</a></td><td>Merge a stopped or running trace case.</td></tr>
+<tr><td valign="top"><a href="#merge_trace-3">merge_trace/3</a></td><td>Merge a stopped or running trace case.</td></tr>
+<tr><td valign="top"><a href="#read_from_file-1">read_from_file/1</a></td><td>Read a configuration file as previously saved by
+  <a href="#save_to_file-1">'save_to_file/1'</a>.</td></tr>
+<tr><td valign="top"><a href="#run_trace-1">run_trace/1</a></td><td>Run one of the stored trace cases.</td></tr>
+<tr><td valign="top"><a href="#run_trace-2">run_trace/2</a></td><td>Run one of the stored trace cases, providing a comment.</td></tr>
+<tr><td valign="top"><a href="#save_to_file-1">save_to_file/1</a></td><td>Save current configuration to a file.</td></tr>
+<tr><td valign="top"><a href="#start_link-0">start_link/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop-0">stop/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_trace-1">stop_trace/1</a></td><td>Stop a trace.</td></tr>
+<tr><td valign="top"><a href="#terminate-2">terminate/2</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_flag-1">add_flag/1</a></h3>
+<div class="spec">
+<p><tt>add_flag(Flags) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_merge_conf-1">add_merge_conf/1</a></h3>
+<div class="spec">
+<p><tt>add_merge_conf(Merge_conf) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_pattern-1">add_pattern/1</a></h3>
+<div class="spec">
+<p><tt>add_pattern(Pattern) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="add_trace_case-1">add_trace_case/1</a></h3>
+<div class="spec">
+<p><tt>add_trace_case(TraceCase) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="code_change-3">code_change/3</a></h3>
+<div class="spec">
+<p><tt>code_change(OldVsn, State, Extra) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_flag-1">delete_flag/1</a></h3>
+<div class="spec">
+<p><tt>delete_flag(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_merge_conf-1">delete_merge_conf/1</a></h3>
+<div class="spec">
+<p><tt>delete_merge_conf(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_pattern-1">delete_pattern/1</a></h3>
+<div class="spec">
+<p><tt>delete_pattern(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="delete_trace_case-1">delete_trace_case/1</a></h3>
+<div class="spec">
+<p><tt>delete_trace_case(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_flag-1">get_flag/1</a></h3>
+<div class="spec">
+<p><tt>get_flag(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_flags-0">get_flags/0</a></h3>
+<div class="spec">
+<p><tt>get_flags() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_merge_conf-1">get_merge_conf/1</a></h3>
+<div class="spec">
+<p><tt>get_merge_conf(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_merge_configurations-0">get_merge_configurations/0</a></h3>
+<div class="spec">
+<p><tt>get_merge_configurations() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_pattern-1">get_pattern/1</a></h3>
+<div class="spec">
+<p><tt>get_pattern(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_patterns-0">get_patterns/0</a></h3>
+<div class="spec">
+<p><tt>get_patterns() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_trace_case-1">get_trace_case/1</a></h3>
+<div class="spec">
+<p><tt>get_trace_case(Reference) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_trace_cases-0">get_trace_cases/0</a></h3>
+<div class="spec">
+<p><tt>get_trace_cases() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_call-3">handle_call/3</a></h3>
+<div class="spec">
+<p><tt>handle_call(Request, From, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_cast-2">handle_cast/2</a></h3>
+<div class="spec">
+<p><tt>handle_cast(Request, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_info-2">handle_info/2</a></h3>
+<div class="spec">
+<p><tt>handle_info(Info, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init-1">init/1</a></h3>
+<div class="spec">
+<p><tt>init(Args) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="merge_trace-2">merge_trace/2</a></h3>
+<div class="spec">
+<p><tt>merge_trace(Ref, MergeId) -&gt; any()</tt></p>
+</div><p>Merge a stopped or running trace case. This function will merge the most
+  recent trace execution. If a trace is still running, then when
+  this function is called, the trace will be stopped automatically.
+  <p>The function requires the id of a merge to run</p></p>
+
+<h3 class="function"><a name="merge_trace-3">merge_trace/3</a></h3>
+<div class="spec">
+<p><tt>merge_trace(Ref, RunRef, MergeId) -&gt; any()</tt></p>
+</div><p>Merge a stopped or running trace case.
+  If it is still running, then when
+  this function is called, the trace will be stopped automatically.
+  <p>The function requires the id of a merge to run and an id of
+  a trace execution</p></p>
+
+<h3 class="function"><a name="read_from_file-1">read_from_file/1</a></h3>
+<div class="spec">
+<p><tt>read_from_file(FileName) -&gt; any()</tt></p>
+</div><p>Read a configuration file as previously saved by
+  <a href="#save_to_file-1">'save_to_file/1'</a>.</p>
+
+<h3 class="function"><a name="run_trace-1">run_trace/1</a></h3>
+<div class="spec">
+<p><tt>run_trace(Ref) -&gt; any()</tt></p>
+</div><p>Run one of the stored trace cases.</p>
+
+<h3 class="function"><a name="run_trace-2">run_trace/2</a></h3>
+<div class="spec">
+<p><tt>run_trace(Ref, Comment) -&gt; any()</tt></p>
+</div><p>Run one of the stored trace cases, providing a comment.</p>
+
+<h3 class="function"><a name="save_to_file-1">save_to_file/1</a></h3>
+<div class="spec">
+<p><tt>save_to_file(FileName) -&gt; any()</tt></p>
+</div><p>Save current configuration to a file. The file will be stored in a
+  binary format.</p>
+
+<h3 class="function"><a name="start_link-0">start_link/0</a></h3>
+<div class="spec">
+<p><tt>start_link() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop-0">stop/0</a></h3>
+<div class="spec">
+<p><tt>stop() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="stop_trace-1">stop_trace/1</a></h3>
+<div class="spec">
+<p><tt>stop_trace(Ref) -&gt; any()</tt></p>
+</div><p>Stop a trace</p>
+
+<h3 class="function"><a name="terminate-2">terminate/2</a></h3>
+<div class="spec">
+<p><tt>terminate(Reason, State) -&gt; any()</tt></p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, May 21 2010, 16:47:56.</i></p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+ebin/cli.beam: onviso.hrl
+ebin/cli_util.beam:
+ebin/config_generator.beam: onviso.hrl
+ebin/onviso.beam:
+ebin/onviso_example.beam:
+ebin/onviso_file_helper.beam:
+ebin/onviso_monitor.beam:
+ebin/onviso_server.beam: onviso.hrl
+ebin/overload_handler.beam:
+ebin/wxi.beam: /usr/otp/R13B03/lib/erlang/lib/wx-0.98.4/include/wx.hrl
+ebin/cli.beam:
+ebin/cli_util.beam:
+ebin/config_generator.beam:
+ebin/onviso.beam:
+ebin/onviso_example.beam:
+ebin/onviso_file_helper.beam:
+ebin/onviso_monitor.beam:
+ebin/onviso_server.beam:
+ebin/overload_handler.beam:
+ebin/wxi.beam:

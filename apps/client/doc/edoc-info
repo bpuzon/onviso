@@ -1,0 +1,3 @@
+{application,client}.
+{packages,[]}.
+{modules,[client]}.

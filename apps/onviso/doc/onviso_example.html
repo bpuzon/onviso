@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module onviso_example</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module onviso_example</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Onviso_example contains a number of examples on how merging
+  using <a href="onviso.html#merge-4">'onviso:merge/4'</a> can be conducted.
+
+<p><b>Authors:</b> Aniko Nagyne Vig (<a href="mailto:aniko@erlang-consulting.com"><tt>aniko@erlang-consulting.com</tt></a>), Marcus Ljungblad, Erlang Training and Consulting Ltd.</p>
+
+<h2><a name="description">Description</a></h2><p>Onviso_example contains a number of examples on how merging
+  using <a href="onviso.html#merge-4">'onviso:merge/4'</a> can be conducted.
+  The examples in this module is by no means conclusive but aims to
+  help new users of Onviso or Inviso grasp the possibilities that
+  merging traces provides. It is fully possible to build customised
+  profiling tools and property checking tools based solely on the traces
+  generated and the merge function.</p>
+ 
+  <p>Please have a look at the source code of this file to understand the
+  examples.</p>
+ 
+   Version: 1.0
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#node_trace_counter-1">node_trace_counter/1</a></td><td>This function summarises the traces by node.</td></tr>
+<tr><td valign="top"><a href="#overload_protection-0">overload_protection/0</a></td><td>In this example, a trace is set-up with overload protection
+  activated.</td></tr>
+<tr><td valign="top"><a href="#profiling_count_function_calls-1">profiling_count_function_calls/1</a></td><td>This example implements a function call counter based on traces  
+generated.</td></tr>
+<tr><td valign="top"><a href="#profiling_count_function_calls_shell-1">profiling_count_function_calls_shell/1</a></td><td>Same as the example above except that it sends all traces to
+  the shell when merging is complete.</td></tr>
+<tr><td valign="top"><a href="#profiling_time_function_calls-1">profiling_time_function_calls/1</a></td><td>This example demonstrates how traces and their return signals  
+can be used to implement a simple profiler by measuring the execution  
+time of each function call.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="node_trace_counter-1">node_trace_counter/1</a></h3>
+<div class="spec">
+<p><tt>node_trace_counter(Ref) -&gt; any()</tt></p>
+</div><p>This function summarises the traces by node.</p>
+
+<h3 class="function"><a name="overload_protection-0">overload_protection/0</a></h3>
+<div class="spec">
+<p><tt>overload_protection() -&gt; any()</tt></p>
+</div><p>In this example, a trace is set-up with overload protection
+  activated. The <a href="overload_handler.html">'overload_handler'</a> module
+  provides the three functions required when activating overload protection.</p>
+
+<h3 class="function"><a name="profiling_count_function_calls-1">profiling_count_function_calls/1</a></h3>
+<div class="spec">
+<p><tt>profiling_count_function_calls(Ref) -&gt; any()</tt></p>
+</div><p><p>This example implements a function call counter based on traces  
+generated. All results are stored as tuples in the handler data,  
+which is a list.</p>
+ 
+  <p>Each trace is evaluated using a separate internal function. Since
+  the format of the incoming traces are not always the same, the
+  <code>workerfun</code> must match several heads. Everything which is
+  not a function call is however ignored.</p></p>
+
+<h3 class="function"><a name="profiling_count_function_calls_shell-1">profiling_count_function_calls_shell/1</a></h3>
+<div class="spec">
+<p><tt>profiling_count_function_calls_shell(Ref) -&gt; any()</tt></p>
+</div><p>Same as the example above except that it sends all traces to
+  the shell when merging is complete. Note that merging and sending
+  traces to shell is not the same as directly relaying them to to a
+  collector node. Here the merging will take place as defined first.</p>
+
+<h3 class="function"><a name="profiling_time_function_calls-1">profiling_time_function_calls/1</a></h3>
+<div class="spec">
+<p><tt>profiling_time_function_calls(Ref) -&gt; any()</tt></p>
+</div><p><p>This example demonstrates how traces and their return signals  
+can be used to implement a simple profiler by measuring the execution  
+time of each function call.</p>
+ 
+  <p>This is done by storing each 'call' and the time when it was
+  generated and comparing it with the 'return_from' trace's time. The
+  list of processed calls are stored in a record which is passed in
+  as the handler data. </p>
+ 
+  <pre>
+  -record(mdata, {calls, results}).
+  </pre>
+ 
+  <p>
+  The same record also stores the evaluated results in a separate list.</p>
+  <p>Although the <code>WorkFun</code> doesn't necessarily classify as
+  beautiful code, it demonstrates that quite a lot can be done without
+  help from external modules or functions. </p>
+ 
+  <p><strong>Note:</strong> this may neither be the most accurate nor
+  most efficient way of profiling function calls. </p></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, May 21 2010, 16:47:56.</i></p>
+</body>
+</html>
