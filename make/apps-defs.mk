@@ -13,7 +13,7 @@ ERLTEST=escript "$(shell cygpath --mixed "$(UTILSDIR)/erltest")"
 endif
 
 # Extra flags
-ERLC_FLAGS?=+warn_missing_spec +debug_info
+#ERLC_FLAGS?=+warn_missing_spec +debug_info
 TEST_ERLC_FLAGS?=
 ERLTEST_FLAGS?=
 
