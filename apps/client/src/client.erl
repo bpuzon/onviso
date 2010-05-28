@@ -1,3 +1,5 @@
+%%Copyright (c) 2010 Erlang Solutions Ltd.
+
 -module(client).
 -compile(export_all).
 
