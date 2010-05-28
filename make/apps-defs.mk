@@ -1,10 +1,6 @@
 APPS_DEFS_MK:=$(lastword $(MAKEFILE_LIST))
 UTILSDIR=$(shell dirname "$(APPS_DEFS_MK)")/../utils
 
-# ERLDEP and ERLTEST are quoted, as the path might contain
-# spaces.
-ERLDEP="$(UTILSDIR)/erldep"
-
 ifneq ($(shell uname -o),Cygwin)
 ERLTEST="$(UTILSDIR)/erltest"
 else
