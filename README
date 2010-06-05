@@ -1,0 +1,19 @@
+Copyright (c) 2010 Erlang Solutions Ltd.
+
+Available make options:
+ make
+ make clean
+ make run_test
+
+In order to run the tests of provided in onviso_tests.erl one must first set up
+two nodes, one called 'server' and the other 'client'.
+
+For the server node:
+        erl -sname server
+        1> server:start().
+
+For the client node:
+        erl -sname client
+        1> client:init().
+
+This should set the erlang cookie to 'inviso' and connect the two nodes to each other.

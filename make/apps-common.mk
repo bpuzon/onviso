@@ -25,18 +25,16 @@ $(APPFILE): src/$(APPLICATION).app.src vsn.mk
 src/$(APPLICATION).app.src vsn.mk:
 	@true
 
-sinclude .depend
-
 # Build an erlang file
-ebin/%.beam: src/%.erl $(APPFILE) | .args
+ebin/%.beam: src/%.erl $(APPFILE) 
 	@echo ERLC $<
-	@erlc $(ERLC_FLAGS) $$(cat .args) -I include -o ebin $<
+	@erlc $(ERLC_FLAGS) -I include -o ebin $<
 
 RUN_TEST_PATH=  -pa ../eqc/ebin \
 		-pa "$(PWD)/ebin" \
-		-pa "$(PWD)/test" $$(cat .args)
+		-pa "$(PWD)/test" 
 
-run_test: test | .args
+run_test: test 
 	@echo ERLTEST $(APPLICATION)_suite
 	$(ERLTEST) $(ERLTEST_FLAGS) -outdir $(COVER_REPORT) \
 		$(RUN_TEST_PATH) \
@@ -45,23 +43,21 @@ run_test: test | .args
 run_test_shell:
 	erl $(RUN_TEST_PATH)
 
-run_gui: all .args
+run_gui: all 
 	@echo ERLGUI $(APPLICATION)
 	erl -pa "$(PWD)/ebin" -eval "wxi:start()"
 
 test: all $(TEST_BEAMS)
 
-test/%.beam: test/%.erl | .args
+test/%.beam: test/%.erl 
 	@echo ERLC $<
-	@erlc $(TEST_ERLC_FLAGS) $$(cat .args) \
-		$(shell $(ERLDEP) -libs test $(APPFILE) $(LIBDIRS)) \
-		-I include -pa ../eqc/ebin -o test $<
+	@erlc $(TEST_ERLC_FLAGS) -I include -o test $<
 
 # Build docs
 doc: $(DOCS)
-$(DOCS): $(SOURCES) $(INCLUDES) doc/overview.edoc $(APPFILE) | .args
+$(DOCS): $(SOURCES) $(INCLUDES) doc/overview.edoc $(APPFILE)
 	@echo "EDOC $(APPLICATION)"
-	@erl -noinput $$(cat .args) -eval \
+	@erl -noinput -eval \
 		'edoc:application($(APPLICATION), "./", [{doc, "doc/"}, {preprocess, true}, {todo, true}]).' \
 		-s erlang halt
 
@@ -73,9 +69,3 @@ clean:
 	@rm -f ebin/*.beam
 	@rm -f test/*.beam
 	@rm -rf cover_report
-
-DIALYZER_FLAGS?=-Wunderspecs
-# Analysing one directory is fast, but we can't check calls to other
-# applications.
-dialyzer: .args
-	dialyzer $(DIALYZER_FLAGS) $$(cat .args) --src -r src/

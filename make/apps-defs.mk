@@ -1,10 +1,6 @@
 APPS_DEFS_MK:=$(lastword $(MAKEFILE_LIST))
 UTILSDIR=$(shell dirname "$(APPS_DEFS_MK)")/../utils
 
-# ERLDEP and ERLTEST are quoted, as the path might contain
-# spaces.
-ERLDEP="$(UTILSDIR)/erldep"
-
 ifneq ($(shell uname -o),Cygwin)
 ERLTEST="$(UTILSDIR)/erltest"
 else
@@ -13,7 +9,7 @@ ERLTEST=escript "$(shell cygpath --mixed "$(UTILSDIR)/erltest")"
 endif
 
 # Extra flags
-ERLC_FLAGS?=+warn_missing_spec +debug_info
+#ERLC_FLAGS?=+warn_missing_spec +debug_info
 TEST_ERLC_FLAGS?=
 ERLTEST_FLAGS?=
 

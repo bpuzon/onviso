@@ -41,27 +41,7 @@ app: $(addsuffix .app,$(APPS))
 %.app: %
 	@$(call submake,$<) app
 
-UTILSDIR=$(LIBDIRS)/../utils
-ERLDEP="$(UTILSDIR)/erldep"
-APPDEP="$(UTILSDIR)/appdep"
 
-.DELETE_ON_ERROR:
-
-# The firstword+realpath hack serves to find the first of the
-# specified files that exists.
-appdeps = $(shell $(ERLDEP) -apps $1/src $(firstword $(realpath $1/src/$1.app.src $1/ebin/$1.app)) .)
-
-define depend_template
-@echo $1.all: $(addsuffix .all,$2) >>$@
-@echo $1.test: $(addsuffix .all,$2) >>$@
-
-endef
-
-sinclude .depend
-.depend: $(APP_SRC)
-	@echo APPDEP
-	@echo >$@
-	$(foreach app,$(APPS),$(call depend_template,$(app),$(call appdeps,$(app))))
 
 DIALYZER_FLAGS?=-Wunderspecs
 dialyzer:

@@ -1,4 +1,0 @@
-{application,elevator}.
-{packages,[]}.
-{modules,[display,e_graphic,elev_sup,elevator,elevators,g_sup,scheduler,
-          sim_sup,stoplist,sys_event,system_sup,tracer,util]}.

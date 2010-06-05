@@ -1,5 +1,0 @@
-{application,onviso}.
-{packages,[]}.
-{modules,[cli,cli_util,config_generator,onviso,onviso_example,
-          onviso_file_helper,onviso_monitor,onviso_server,overload_handler,
-          wxi]}.
